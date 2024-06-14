@@ -24,9 +24,9 @@ exports.show = async (req, res) => {
 };
 
 exports.create = async (req, res) => {
-  const { curp, fecha, descripcion } = req.body;
+  const { curp, date } = req.body;
   try {
-    const nuevaCita = await Appointments.create({ curp, fecha, descripcion });
+    const nuevaCita = await Appointments.create({ curp, date });
     return res.json(nuevaCita);
   } catch (err) {
     if (err.name === 'SequelizeUniqueConstraintError') {
@@ -38,7 +38,7 @@ exports.create = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
-  const { curp, fecha, descripcion } = req.body;
+  const { curp, date } = req.body;
   try {
     const cita = await Appointments.findByPk(req.params.id);
     if (!cita) {
@@ -46,8 +46,7 @@ exports.update = async (req, res) => {
     }
 
     cita.curp = curp;
-    cita.fecha = fecha;
-    cita.descripcion = descripcion;
+    cita.fecha = date;
     await cita.save();
     return res.json(cita);
   } catch (err) {
@@ -65,7 +64,6 @@ exports.delete = async (req, res) => {
     if (!cita) {
       return res.status(404).json({ error: 'Cita no encontrada' });
     }
-
     await cita.destroy();
     return res.json({ message: 'Cita eliminada' });
   } catch (err) {

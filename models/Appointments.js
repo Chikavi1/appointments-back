@@ -12,14 +12,10 @@ const Appointments = sequelize.define('Appointments', {
     allowNull: false,
     unique: true,
   },
-  fecha: {
+  date:{
     type: DataTypes.DATE,
     allowNull: false,
-  },
-  descripcion: {
-    type: DataTypes.TEXT,
-    allowNull: true,
-  },
+  }
 });
 
 module.exports = Appointments;

@@ -3,10 +3,11 @@ const router = express.Router();
 
 const AppointmentController = require('../controllers/AppointmentsController');
 
-router.get('/',AppointmentController.index);
-router.get('/:id',AppointmentController.show);
-router.post('/',AppointmentController.create);
-router.put('/:id',AppointmentController.update);
-router.delete('/:id',AppointmentController.delete);
+router.get('/index',AppointmentController.index);
+router.get('/get/:id',AppointmentController.show);
+router.post('/create',AppointmentController.create);
+router.put('/update/:id',AppointmentController.update);
+router.delete('/delete/:id',AppointmentController.middlewareDelete, AppointmentController.delete);
 
-module.exports = router;
+
+module.exports = router;    

@@ -30,7 +30,7 @@ exports.create = async (req, res) => {
     return res.json(nuevaCita);
   } catch (err) {
     if (err.name === 'SequelizeUniqueConstraintError') {
-      return res.status(400).json({ error: 'CURP already exists for another cita' });
+      return res.status(400).json({ error: 'CURP ya existe' });
     }
     console.error(err);
     return res.status(500).json({ error: 'Error al crear cita' });

@@ -12,6 +12,11 @@ const Appointments = sequelize.define('Appointments', {
     allowNull: false,
     unique: true,
   },
+  folio:{
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
   date:{
     type: DataTypes.DATE,
     allowNull: false,

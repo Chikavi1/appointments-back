@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  angular-app:
+    build: ./appointments-front
+    ports:
+      - "4200:4200"
+
+  backend:
+    build: ./appointments-back
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: host.docker.internal
+    links:
+      - postgres
+  
+  postgres:
+    container_name: "postgres"
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_PASSWORD=postgres
+      POSTGRES_USER=postgres
+      POSTGRES_HOST=postges
+      POSTGRES_DB=postgres
+    ports:
+      - "5434:5434"
+
+volumes:
+  postgres-data:

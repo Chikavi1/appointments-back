@@ -10,13 +10,15 @@ A continuación se detallan los endpoints disponibles en la API para la gestión
 GET /api/index
 GET /api/get/:id
 POST /api/create
+```
+
 **Datos Requeridos:**
 ```json
 {
   "curp": "string",
   "date": "string (formato YYYY-MM-DD)"
 }
-
+```
 PUT /api/update/:id
 
 **Datos Requeridos:**
@@ -25,6 +27,7 @@ PUT /api/update/:id
   "curp": "string",
   "date": "string (formato YYYY-MM-DD)"
 }
+```
 DELETE /api/delete/:id
 
 **Datos Requeridos:**
@@ -33,3 +36,4 @@ DELETE /api/delete/:id
   "folio": "string",
   "id_user": "string"
 }
+```
